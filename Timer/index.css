@@ -1,0 +1,53 @@
+#time {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background: lightblue;
+    margin: auto;
+    position: relative;
+    color: ghostwhite;
+}
+
+#minute {
+    position: absolute;
+    width: 40%;
+    top: 25%;
+    font-size: 10em;
+}
+
+#dot {
+    position: absolute;
+    width: 10%;
+    left: 40%;
+    top: 25%;
+    font-size: 10em;
+}
+
+#second {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    top: 25%;
+    font-size: 10em;
+}
+
+.btn-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: lightgrey;
+    height: 10%;
+    display: flex;
+}
+
+.btn{
+    flex: 33;
+    background: #eceaea;
+    border: 1px solid lightgrey;
+    font-family: monospace;
+}
+
+.btn:hover{
+    background: lightslategray;
+}

@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Timer</title>
+	<link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-	<div id="minute"></div>
-	<div id="second"></div>
-	<button id="btn-start">Start</button>
+	<div id="time">
+		<div id="minute"></div>
+		<div id="dot">:</div>
+		<div id="second"></div>
+		<div class="btn-container">
+			<button class="btn" id="btn-start">Start</button>
+			<button class="btn" id="btn-pause">Pause</button>
+			<button class="btn" id="btn-restart">Restart</button>
+		</div>
+	</div>
+
 	<script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>
