@@ -1,0 +1,22 @@
+{
+  "name": "angularjs-playground",
+  "description": "this is an angularjs playground designed to test and to learn the angularjs platform",
+  "main": "index.js",
+  "authors": [
+    "Haidar <hdargaye@maureva.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/haidarknightfury/LittleDevs",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.7.0",
+    "bootstrap": "^4.1.1"
+  }
+}

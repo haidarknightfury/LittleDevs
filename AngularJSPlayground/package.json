@@ -1,0 +1,14 @@
+{
+  "name": "angularjs-playground",
+  "version": "1.0.0",
+  "description": "this is an angularjs playground designed to test and to learn the angularjs platform",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+  },
+  "dependencies": {}
+}
