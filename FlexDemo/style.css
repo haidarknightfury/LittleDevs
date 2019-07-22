@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    background: yellow;
+    margin-bottom: 20px;
+}
+
+.item{
+    height: 50px;
+    width: 30%;
+}
+
+.container1{
+    flex-direction: row;
+}
+.item1{
+    background: blue;
+}
+
+.item2{
+    background: red;
+}
+
+/**
+ *  CONTAINER 2
+ **/
+
+ .container2{
+     flex-direction: column;
+ }
+
+ .item3{
+    background: blue;
+ }
+
+ .item4{
+    background: red;
+ }

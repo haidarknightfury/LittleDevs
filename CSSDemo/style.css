@@ -1,0 +1,3 @@
+.mydiv >span> input[type="text"] {
+    background: gray !important;
+}
