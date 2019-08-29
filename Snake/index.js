@@ -11,16 +11,43 @@ function Board(ctx, canvas){
 
     this.ctx = ctx;
     this.canvas = canvas;
-    this.snake = new Snake(20, 10, ctx, canvas);
+
+    // FOODS
+    const MAX_FOODS = 5;
+    this.foods = [];
+
+    // SNAKE
+    this.snake = new Snake(10, 10, this.ctx, this.canvas);
+    
+    initFoods();
 
     function draw(){
-        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-        this.snake.draw(this.ctx);
+        clearBoard();
+        this.snake.draw();
+        drawFoods();
     }
 
     function keydownHandler(e) {
         snake.executeCommand(e.key);
     }
+
+
+    function drawFoods(){
+        for (let food of this.foods){
+            food.draw();
+        }
+    }
+
+    function initFoods() {
+        for (let i = 0; i < MAX_FOODS; i++) {
+            this.foods.push(new Food(5, 5, this.ctx, this.canvas));
+        }
+    }
+
+    function clearBoard(){
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
     return {
         draw: draw,
         keydownHandler: keydownHandler
@@ -28,10 +55,35 @@ function Board(ctx, canvas){
 }
 
 
+function Food(width,height,ctx, canvas){
+    this.width= width;
+    this.height = height;
+    this.ctx = ctx;
+    this.canvas =canvas;
+
+    this.x = getRandomInt(this.canvas.width);
+    this.y = getRandomInt(this.canvas.height);
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    this.draw = function(){
+        this.ctx.beginPath();
+        this.ctx.rect(this.x, this.y, this.width, this.height);
+        this.ctx.fillStyle = "#FF00000";
+        this.ctx.closePath();
+        this.ctx.fill();
+    }
+}
+
+
 function Snake(width, height, ctx, canvas){
 
+    const SPEED_SNAKE = 10;
+
     // DY & DX position of snakes -> Represent the velocity
-    this.dx = 10;
+    this.dx = SPEED_SNAKE;
     this.dy = 0;
 
     // Snake properties -> width & height
@@ -48,24 +100,24 @@ function Snake(width, height, ctx, canvas){
     this.commandMap = {
         'ArrowUp':  () =>{
             this.dx = 0;
-            this.dy = -10;
+            this.dy = -SPEED_SNAKE;
         }, 'ArrowDown': ()=>{
             this.dx = 0;
-            this.dy = 10;
+            this.dy = SPEED_SNAKE;
         }, 'ArrowLeft':  () => {
-            this.dx = -10;
+            this.dx = -SPEED_SNAKE;
             this.dy = 0;
         }, 'ArrowRight':  () => {
-            this.dx = 10;
+            this.dx = SPEED_SNAKE;
             this.dy = 0;
         }};
 
-    this.draw = function(ctx){
-        ctx.beginPath();
-        ctx.rect(this.x, this.y, this.snakeWidth, this.snakeHeight);
-        ctx.fillStyle = "#FF00000";
-        ctx.closePath();
-        ctx.fill();
+    this.draw = function(){
+        this.ctx.beginPath();
+        this.ctx.rect(this.x, this.y, this.snakeWidth, this.snakeHeight);
+        this.ctx.fillStyle = "#FF00000";
+        this.ctx.closePath();
+        this.ctx.fill();
         this.x += this.dx;
         this.y += this.dy;
     };
@@ -73,7 +125,9 @@ function Snake(width, height, ctx, canvas){
     this.executeCommand = function (key){
         try {
             this.commandMap[key]();
-        } catch (error) { }
+        } catch (error) { 
+            throw e;
+        }
         
     }
 
